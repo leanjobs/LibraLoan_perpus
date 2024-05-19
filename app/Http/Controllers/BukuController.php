@@ -7,6 +7,7 @@ use App\Models\kategori_buku;
 use Exception;
 use Illuminate\Http\Request;
 
+
 class BukuController extends Controller
 {
     public function buku()
@@ -45,15 +46,34 @@ class BukuController extends Controller
             ], 500);
         }
     }
-    public function showBuku()
+    // public function showBuku()
+    // {
+    //     return buku::all();
+    // }
+    // public function showCreateBuku()
+    // {
+
+    //     $kategoris = kategori_buku::all();
+    //     return view('perpus.buku.createBuku', compact('kategoris'));
+    // }
+
+    public function showCreate()
     {
-        return buku::all();
+        $kategoris = kategori_buku::all();
+        return view('perpus.buku.createBuku',  compact('kategoris'));
     }
 
-    public function showBukuById($id)
+    public function showEdit($id)
     {
-        return buku::find($id);
+        $buku = buku::find($id);
+        $kategoris = kategori_buku::all();
+        return view('perpus.buku.updateBuku', compact('buku', 'kategoris'));
     }
+
+    // public function showBukuById($id)
+    // {
+    //     return buku::find($id);
+    // }
     public function updateBuku(Request $request, $id)
     {
         try {
@@ -92,7 +112,7 @@ class BukuController extends Controller
             $buku = Buku::destroy($id);
 
             if ($buku) {
-            //    return  "buku berhasil dihapus";
+                //    return  "buku berhasil dihapus";
                 return redirect()->route('daftar_buku')->with('success', 'buku berhasil dihapus');
             } else {
                 throw new Exception("tidak ada buku denga id $id");

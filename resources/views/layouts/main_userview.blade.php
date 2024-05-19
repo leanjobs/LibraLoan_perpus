@@ -42,7 +42,7 @@
     {{-- @include('partials.index.sidebar_siswa') --}}
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        {{-- @include('partials.index.navbar_siswa') --}}
+        @include('partials.navbar.navbar_siswa')
         <!-- End Navbar -->
         @yield('content')
     </main>

@@ -1,19 +1,19 @@
 <!-- Modal -->
-<div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="createUserLabel" aria-hidden="true">
+<div class="modal fade" id="createPetugas" tabindex="-1" role="dialog" aria-labelledby="createPetugasLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createUserLabel">Tambah User</h5>
+                <h5 class="modal-title" id="createPetugasLabel">Tambah Buku</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('user.create') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('petugas.create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body container-fluid">
                         <div class="mb-3">
-                            <label for="name" class="form-label">nama user</label>
+                            <label for="name" class="form-label">nama petugas</label>
                             <input autocomplete="off" required type="text"
                                 class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                                 value="{{ old('name') }}">

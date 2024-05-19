@@ -1,24 +1,24 @@
 @extends('layouts.main')
 
-@section('title', 'Daftar User')
+@section('title', 'Daftar Petugas')
 
 @section('content')
     <div class="container-fluid py-4">
         <div class="container-fluid py-4">
             <!-- Button trigger modal -->
-            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createUser">
-                Tambah User
+            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createPetugas">
+                Tambah petugas
             </button>
-            @include('perpus.user.createUser')
+            @include('perpus.petugas.createPetugas')
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Daftar User</h6>
+                            <h6>Daftar petugas</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
-                                <!-- <form action="{{ route('daftar_user') }}" method="post" enctype="multipart/form-data">
+                                <!-- <form action="{{ route('daftar_petugas') }}" method="post" enctype="multipart/form-data">
                                                                                                               @csrf -->
                                 <table class="table align-items-center mb-0">
                                     <thead>
@@ -58,18 +58,18 @@
                                                 </td> --}}
                                                 <td class="d-flex">
 
-                                                    <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                                                    <form action="{{ route('petugas.delete', $user->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger mx-1">Delete</button>
 
                                                     </form>
                                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                        data-bs-target="#editUser_{{ $user->id }}"
+                                                        data-bs-target="#editPetugas_{{ $user->id }}"
                                                         data-book-id={{ $user->id }}>
-                                                        Edit user
+                                                        Edit petugas
                                                     </button>
-                                                    @include('perpus.user.updateUser')
+                                                    @include('perpus.petugas.updatePetugas')
                                                 </td>
                                             </tr>
                                         @endforeach

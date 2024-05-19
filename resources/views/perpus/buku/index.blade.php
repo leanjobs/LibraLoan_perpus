@@ -6,10 +6,11 @@
     <div class="container-fluid py-4">
         <div class="container-fluid py-4">
             <!-- Button trigger modal -->
-            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createBuku">
+            {{-- <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createBuku">
                 Tambah Buku
             </button>
-            @include('perpus.buku.createBuku')
+            @include('perpus.buku.createBuku') --}}
+            <a class="btn bg-gradient-primary mt-0 w-15" href="{{ url('/show/createBuku') }}">Tambah buku</a>
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
@@ -19,7 +20,7 @@
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <!-- <form action="{{ route('daftar_buku') }}" method="post" enctype="multipart/form-data">
-                                                                                                                                          @csrf -->
+                                                                                                                                                                                                                              @csrf -->
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
@@ -67,7 +68,8 @@
                                                     </p>
                                                 </td>
                                                 <td>
-                                                    <p class="text-xs text-secondary mb-0 ps-3">{{ $buku->deskripsi }}
+                                                    <p class="text-xs text-secondary mb-0 ps-3">
+                                                        {{ $buku->deskripsi }}
                                                     </p>
                                                 </td>
                                                 <td>
@@ -87,12 +89,15 @@
                                                         <button type="submit" class="btn btn-danger mx-1">Delete</button>
 
                                                     </form>
-                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                    {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                         data-bs-target="#editBuku_{{ $buku->id }}"
                                                         data-book-id={{ $buku->id }}>
                                                         Edit buku
-                                                    </button>
-                                                    @include('perpus.buku.updateBuku')
+                                                    </button> --}}
+                                                    <a href="/update/{{ $buku->id }}" class="btn btn-warning">
+                                                        Update </a>
+
+                                                    {{-- @include('perpus.buku.updateBuku') --}}
                                                 </td>
                                             </tr>
                                         @endforeach

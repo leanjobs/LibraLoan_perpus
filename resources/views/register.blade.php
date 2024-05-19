@@ -71,17 +71,27 @@
                                 <form role="form text-left" method="POST" action="{{ route('register_user') }}">
                                     @csrf
                                     <div class="mb-3">
-                                        <input type="text" name="name" class="form-control" placeholder="Name"
-                                            aria-label="Name" aria-describedby="email-addon">
+                                        {{-- <input type="text" name="name" class="form-control" placeholder="Name"
+                                            aria-label="Name" aria-describedby="email-addon"> --}}
+                                        <input autocomplete="off" required type="text"
+                                            class="form-control @error('name') is-invalid @enderror" id="name"
+                                            name="name" value="{{ old('name') }}" placeholder="Name">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="email" name="email" class="form-control" placeholder="Email"
-                                            aria-label="Email" aria-describedby="email-addon">
+                                        {{-- <input type="email" name="email" class="form-control" placeholder="Email"
+                                            aria-label="Email" aria-describedby="email-addon"> --}}
+                                        <input autocomplete="off" required type="text"
+                                            class="form-control @error('email') is-invalid @enderror" id="email"
+                                            name="email" value="{{ old('email') }}" placeholder="Email">
                                     </div>
 
                                     <div class="mb-3">
-                                        <input type="password" name="password" class="form-control" placeholder="Password"
-                                            aria-label="Password" aria-describedby="password-addon">
+                                        {{-- <input type="password" name="password" class="form-control" placeholder="Password"
+                                            aria-label="Password" aria-describedby="password-addon"> --}}
+                                        <input autocomplete="off" required minlength="8" placeholder="min 8 characters"
+                                            type="password" class="form-control @error('password') is-invalid @enderror"
+                                            id="password" name="password" value="{{ old('password') }}"
+                                            placeholder="Password">
                                     </div>
                                     <div class="form-check form-check-info text-left">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"

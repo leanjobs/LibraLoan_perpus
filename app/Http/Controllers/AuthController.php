@@ -20,10 +20,10 @@ class AuthController extends Controller
             } elseif ($user->role_status == 'user') {
                 return redirect('/dashboard');
             } else {
-                dd('error');
+                return redirect('/');
             }
         };
-        return redirect('/login');
+        return redirect('/');
     }
     public function logout()
     {
@@ -49,13 +49,11 @@ class AuthController extends Controller
             //     'message' => 'berhasil tambah buku',
             //     'data' => $user
             // ]);
-            // return
-            return redirect()->route('userview')->with('success', 'kategori buku berhasil ditambahkan');
+            return redirect()->route('login')->with('success', 'kategori buku berhasil ditambahkan');
         } catch (Exception $e) {
-            //return response()->json([
-            //    'message' => 'Gagal menambah bukuuu ' . $e->getMessage()
-            //], 500);
-            return redirect()->route('regis')->with('success', 'kategori buku berhasil ditambahkan');
+            return response()->json([
+                'message' => 'Gagal menambah bukuuu ' . $e->getMessage()
+            ], 500);
         }
     }
 }

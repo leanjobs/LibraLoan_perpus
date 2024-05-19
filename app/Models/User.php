@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     use SoftDeletes;
+    public $count;
 
 
     /**
@@ -49,4 +53,28 @@ class User extends Authenticatable
         ];
     }
     protected $table = 'users';
+    public function peminjaman()
+    {
+        return $this->hasMany(peminjaman::class);
+    }
+    public function detail_peminjaman()
+    {
+        $this->count = DB::table('peminjaman')
+            ->join('detail_peminjaman', 'peminjaman.id', '=', 'detail_peminjaman.peminjaman_id')
+            ->where('peminjam_id', auth()->user()->id)
+            ->where('status', '!=', 3)
+            ->count();
+
+            return($this->count);
+        //dd($this->count);
+    }
+    /**
+     * Define the relationship with peminjaman.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function peminjamans()
+    {
+        return $this->hasMany(Peminjaman::class, 'user_id');
+    }
 }

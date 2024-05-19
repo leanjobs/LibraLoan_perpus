@@ -18,4 +18,6 @@ class kategori_buku extends Model
     {
         return $this->belongsTo(Buku::class, 'bukus_id');
     }
+
+    
 }
