@@ -51,6 +51,13 @@
                     @error('deskripsi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                    <label for="harga_buku" class="form-label">harga_buku</label>
+                    <input autocomplete="off" required type="number"
+                        class="form-control @error('harga_buku') is-invalid @enderror" id="harga_buku" name="harga_buku"
+                        value="{{ old('harga_buku') }}">
+                    @error('harga_buku')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                     <label for="kategori_bukus_id" class="form-label">kategori_bukus_id</label>
                     <select name="kategori_bukus_id" class="form-select" aria-label="Default select example">
                         @foreach ($kategoris as $kategori)

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PerpusController;
+use App\Http\Controllers\Api\TransaksiController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
@@ -11,25 +14,23 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-//kategori
-Route::post('kategori/create', [KategoriController::class, 'createKategori']);
-Route::get('kategori/show', [KategoriController::class, 'showKategori']);
-Route::get('kategori/show/{id}', [KategoriController::class, 'showKategoriById']);
-Route::put('kategori/update/{id}', [KategoriController::class, 'updateKategori']);
-Route::delete('kategori/delete/{id}', [KategoriController::class, 'deleteKategori']);
 
-//buku
-Route::post('buku/create', [BukuController::class, 'createBuku']);
-Route::get('buku/show', [BukuController::class, 'showBuku']);
-Route::get('buku/show/{id}', [BukuController::class, 'showBukuById']);
-Route::put('buku/update/{id}', [BukuController::class, 'updateBuku']);
-Route::delete('buku/delete/{id}', [BukuController::class, 'deleteBuku']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware(['auth:sanctum']);
+Route::get('/profile', [AuthController::class, 'profile'])->middleware(['auth:sanctum']);
 
 
 
-//user
-Route::post('user/create', [UserController::class, 'createUser']);
-Route::get('user/show', [UserController::class, 'showUser']);
-Route::get('user/show/{id}', [UserController::class, 'showUserById']);
-Route::put('user/update/{id}', [UserController::class, 'updateUser']);
-Route::delete('user/delete/{is}', [UserController::class, 'deleteUser']);
+Route::get('/all-book', [PerpusController::class, 'allBook'])->middleware(['auth:sanctum']);
+Route::get('/show-transaksi', [TransaksiController::class, 'allTransaksi'])->middleware(['auth:sanctum']);
+Route::get('/show-peminjaman', [TransaksiController::class, 'getPeminjaman'])->middleware(['auth:sanctum']);
+Route::get('/show-denda', [TransaksiController::class, 'getDenda'])->middleware(['auth:sanctum']);
+Route::get('/show-penolakan', [TransaksiController::class, 'getPenolakan'])->middleware(['auth:sanctum']);
+Route::get('/show-history', [TransaksiController::class, 'getHistory'])->middleware(['auth:sanctum']);
+Route::get('/detail-book/{id}', [TransaksiController::class, 'getDetailBook'])->middleware(['auth:sanctum']);
+
+Route::post('/pinjam/{id}', [TransaksiController::class, 'pinjamBook'])->middleware(['auth:sanctum']);
+Route::post('/rating/{id}', [TransaksiController::class, 'ratingBook'])->middleware(['auth:sanctum']);
+
+
+

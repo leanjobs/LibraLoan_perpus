@@ -17,8 +17,16 @@ class buku extends Model
     {
         return $this->belongsTo(kategori_buku::class, 'kategori_bukus_id');
     }
+    // public function detail_peminjaman()
+    // {
+    //     return $this->belongsTo(detail_peminjaman::class, 'bukus_id');
+    // }
     public function buku()
     {
         return $this->hasMany(detail_peminjaman::class);
+    }
+    public function rating()
+    {
+        return $this->hasMany(rating::class, 'id');
     }
 }

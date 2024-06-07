@@ -9,11 +9,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
+
 
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use HasApiTokens, Notifiable;
     use SoftDeletes;
     public $count;
 
@@ -55,7 +58,7 @@ class User extends Authenticatable
     protected $table = 'users';
     public function peminjaman()
     {
-        return $this->hasMany(peminjaman::class);
+        return $this->hasMany(peminjaman::class, 'peminjaman_id');
     }
     public function detail_peminjaman()
     {
@@ -65,7 +68,7 @@ class User extends Authenticatable
             ->where('status', '!=', 3)
             ->count();
 
-            return($this->count);
+        return ($this->count);
         //dd($this->count);
     }
     /**
@@ -73,8 +76,12 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function peminjamans()
+    // public function peminjamans()
+    // {
+    //     return $this->hasMany(Peminjaman::class, 'user_id');
+    // }
+    public function rating()
     {
-        return $this->hasMany(Peminjaman::class, 'user_id');
+        return $this->hasMany(Rating::class);
     }
 }

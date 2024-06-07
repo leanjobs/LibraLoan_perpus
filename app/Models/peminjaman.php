@@ -18,8 +18,13 @@ class peminjaman extends Model
     {
         return $this->hasMany(detail_peminjaman::class);
     }
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'peminjam_id');
+    }
+    public function buku()
+    {
+        return $this->belongsTo(buku::class, 'bukus_id');
     }
 }

@@ -20,7 +20,7 @@
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <!-- <form action="{{ route('daftar_buku') }}" method="post" enctype="multipart/form-data">
-                                                                                                                                                                                                                              @csrf -->
+                                                                                                                                                                                                                                      @csrf -->
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
@@ -38,6 +38,8 @@
                                                 deskripsi</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 kategori</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                harga buku</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 action</th>
                                         </tr>
@@ -79,6 +81,11 @@
                                                         @else
                                                             <span class="text-danger">tidak tersedia</span>
                                                         @endif
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs text-secondary mb-0 ps-3">
+                                                        {{ $buku->harga_buku }}
                                                     </p>
                                                 </td>
                                                 <td class="d-flex">

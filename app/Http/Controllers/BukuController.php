@@ -12,7 +12,7 @@ class BukuController extends Controller
 {
     public function buku()
     {
-        $bukus = buku::with('kategori_bukus')->get();
+        $bukus = buku::with('kategori_bukus')->latest()->get();
         $kategoris = kategori_buku::all();
         return view('perpus.buku.index', compact('bukus', 'kategoris'));
     }
@@ -25,6 +25,7 @@ class BukuController extends Controller
                 'stok' => 'required|integer',
                 'tahun_terbit' => 'required',
                 'deskripsi' => 'required',
+                'harga_buku' => 'required|integer',
                 'kategori_bukus_id' => 'required',
 
             ]);
@@ -83,6 +84,7 @@ class BukuController extends Controller
                 'stok' => 'required|integer',
                 'tahun_terbit' => 'required',
                 'deskripsi' => 'required',
+                'harga_buku' => 'required|integer',
                 'kategori_bukus_id' => 'required',
 
             ]);
@@ -110,7 +112,7 @@ class BukuController extends Controller
     {
         try {
             $buku = Buku::destroy($id);
-
+            //dd($buku);
             if ($buku) {
                 //    return  "buku berhasil dihapus";
                 return redirect()->route('daftar_buku')->with('success', 'buku berhasil dihapus');

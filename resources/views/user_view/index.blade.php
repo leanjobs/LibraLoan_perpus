@@ -18,6 +18,18 @@
                                     <a href="javascript:;" class="card-title h5 d-block text-darker">
                                         {{ $buku->judul }}
                                     </a>
+                                    <p>{{ $buku->avg_rating }}</p>
+                                    {{-- @foreach ($bukus as $item)
+                                        @foreach ($item->rating as $rating)
+                                            @if ($rating->bukus_id == $buku->id)
+                                                @php
+                                                    $averageRating = $item->rating->avg('rating');
+                                                @endphp
+                                                <p>{{ $averageRating }}</p>
+                                            @endif
+                                        @endforeach
+                                    @endforeach --}}
+
                                     {{-- <p class="card-description mb-4">
                                         {{ $buku->deskripsi }}
                                     </p> --}}

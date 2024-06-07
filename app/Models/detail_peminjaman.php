@@ -9,7 +9,7 @@ class detail_peminjaman extends Model
 {
     use HasFactory;
     // protected $guarded = [];
-    protected $fillable = ['peminjaman_id', 'buku_id'];
+    protected $fillable = ['peminjaman_id', 'bukus_id'];
 
     protected $table = 'detail_peminjaman';
     public function peminjaman()
@@ -18,6 +18,6 @@ class detail_peminjaman extends Model
     }
     public function buku()
     {
-        return $this->belongsTo(buku::class);
+        return $this->belongsTo(buku::class, 'bukus_id');
     }
 }
