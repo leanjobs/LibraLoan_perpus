@@ -15,19 +15,25 @@ use App\Http\Controllers\UserViewController;
 use App\Models\KategoriBuku;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('login');
+Route::get('/signIn', function () {
+    return view('new_login');
 })->name('login');
 
-Route::get('/regis', function () {
+Route::get('/signUp', function () {
     return view('register');
 })->name('regis');
 
+Route::get('/', function () {
+    return view('landing_page');
+})->name('landingPage');
 
+Route::get('/test', function () {
+    return view('test');
+});
 
 //login action
 
-Route::post('/login', [AuthController::class, 'login'])->name('login_user');
+Route::post('/postLogin', [AuthController::class, 'login'])->name('login_user');
 
 // //register action
 
@@ -52,8 +58,10 @@ Route::group(['middleware' => ['auth', 'CekRole:user']], function () {
     Route::post('/rating/{id}', [UserViewController::class, 'addRating'])->name('add.rating');
     Route::post('/save/{id}', [UserViewController::class, 'savedBook'])->name('save.book');
     Route::delete('/detailBuku/delete/{id}', [UserViewController::class, 'deleteSave'])->name('delete.save');
-    Route::get('/show/saved', [SaveController::class, 'showSaved'])->name('show.save');
-
+    Route::get('/profile', [SaveController::class, 'showSaved'])->name('show.save');
+    Route::put('update/user/{id}', [UserViewController::class, 'updateUser'])->name('update.profile');
+    Route::get('/popular', [UserViewController::class, 'popular'])->name('popular.book');
+    Route::get('/kategoriBuku/{id}', [UserViewController::class, 'kategoriBuku'])->name('popular.book');
 });
 
 Route::group(['middleware' => ['auth', 'CekRole:petugas,admin']], function () {

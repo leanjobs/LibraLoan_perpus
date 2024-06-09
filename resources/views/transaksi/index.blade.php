@@ -102,8 +102,9 @@
                                                     </p>
                                                 </td>
                                                 <td>
+
                                                     @foreach ($item->detail_peminjaman as $buku)
-                                                        {{-- {{ dd($buku->buku) }} --}}
+                                                      
                                                         @if ($buku->buku)
                                                             <p class="text-xs text-secondary mb-0 lis-3">
                                                                 {{ $buku->buku->judul }}

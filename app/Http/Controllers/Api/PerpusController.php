@@ -26,4 +26,24 @@ class PerpusController extends Controller
             ], 500);
         }
     }
+    public function getByCategories($id)
+    {
+        try {
+            // return $id;
+
+            $kategoris = kategori_buku::all();
+            $bukus = buku::with(['kategori_bukus', 'rating'])->orderBy('avg_rating', 'DESC')->where('kategori_bukus_id', $id)->get();
+
+
+            return response([
+                'message' => 'success get allBook',
+                'data' => ['kategoris' => $kategoris, 'bukus' => $bukus]
+            ], 200);
+        } catch (Exception $e) {
+            return response([
+                'message' => 'error get allBook',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }

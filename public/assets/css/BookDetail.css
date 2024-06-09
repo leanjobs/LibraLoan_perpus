@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'FuturaBT-Medium';
+    background: linear-gradient(to bottom right, #f4f7ffd5, #d6e2ff3e);
+    height: max-content;
+    display: flex;
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 97vh;
+    margin: 10px 0 10px 10px;
+    padding: 50px 30px;
+    align-items: center;
+    width: max-content;
+    border-radius: 20px;
+    background-color: #E7EFFF;
+    box-shadow: 4px 1px 10px 0.2px #bebebe71;
+
+    /* penyebab overflow terletak pada log out button */
+}
+
+nav .logo img {
+    margin-top: 30px;
+    width: 50px;
+}
+
+nav .tab-bar div button {
+    background-color: white;
+    padding: 7px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+nav .tab-bar div button img {
+    width: 25px;
+    height: 25px;
+}
+
+nav .tab-bar div:hover span {
+    visibility: visible;
+    opacity: 1;
+}
+
+nav .tab-bar div:hover button {
+    background-color: #DEE8FF;
+    outline: 1px solid white;
+    transform: scale(1.2);
+}
+
+nav .tab-bar div span {
+    z-index: 99;
+    transition: font-weight 0.1s ease-in, transform 0.2s ease-in-out, color 0.2s ease;
+    font-family: "poppins";
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: absolute;
+    background-color: #DEE8FF;
+    width: max-content;
+    padding: 8px;
+    color: black;
+    left: 100px;
+    border-radius: 5px;
+    visibility: hidden;
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.tab-bar div span::before {
+    content: " ";
+    position: absolute;
+    right: 100%;
+    margin-left: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #DEE8FF transparent transparent;
+}
+
+nav .tab-bar div {
+    cursor: pointer;
+    display: flex;
+    gap: 0.5em;
+    margin-top: 35px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+nav .logout-tab button {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.712);
+    padding: 5px 10px;
+    gap: 0.5em;
+    background-color: #E7EFFF;
+    transition: 2s ease-in-out;
+}
+
+
+.container {
+    height: 100vh;
+    width: 100%;
+    padding-right: 50px;
+    overflow: scroll;
+    padding: 1em 4em 1em 2em;
+    /* position: relative; */
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.container header {
+    padding: 30px 0 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.container header .search input {
+    background-position: left;
+    background-repeat: no-repeat;
+    padding: 20px 30px;
+    outline: none;
+    border: none;
+    box-shadow: 4px 5px 10px #919191;
+    width: 350px;
+    height: 50px;
+    border-radius: 15px;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.search input::placeholder {
+    font-family: Arial;
+}
+
+.search span {
+    transform: translateX(25px);
+    font-size: 15px;
+    color: grey;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.profile img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.profile span .gmail {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.marked {
+    color: rgb(0, 0, 0);
+    font-variation-settings:
+        'FILL' 1;
+}
+
+.star {
+    color: rgb(0, 0, 0);
+    font-variation-settings:
+        'FILL' 1;
+}
+
+.bookDetail {
+    width: 100%;
+    display: flex;
+    gap: 2.5em;
+    margin-top: 30px;
+}
+
+.book img {
+    width: 220px;
+    height: 320px;
+    border-radius: 10px;
+}
+
+.book .stokWSave {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 15px 0 8px 0;
+}
+
+.book .stokWSave span {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.book .button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5em;
+}
+
+.book .button button {
+    height: 50px;
+    border: 2px solid #A8C2F6;
+    color: black;
+    outline: none;
+    border-radius: 10px;
+    font-family: 'FuturaBT-Medium';
+    font-weight: bold;
+}
+
+.button .req {
+    background-color: #A8C2F6;
+}
+
+.button .read {
+    background-color: transparent;
+}
+
+.detail {
+    width: 100%;
+}
+
+.detail h1 {
+    font-size: 30px;
+}
+
+.detail h3 {
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.detail .sinopsis {
+    width: 95%;
+    font-size: 14px;
+}
+
+.detail .rateWPage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 2em;
+    margin: 20px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.detail .rateWPage span .rate {
+    display: flex;
+    margin-left: 5px;
+}
+
+.detail .rateWPage .page {
+    width: 100%;
+}
+
+.detail .rateWPage .stars {
+    display: flex;
+    align-items: center;
+}
+
+.detail .genreView button {
+    margin-right: 10px;
+    width: 150px;
+    height: 40px;
+    outline: none;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1.5px solid black;
+    font-family: 'FuturaBT-Medium';
+    font-weight: bold;
+}
+
+.detail .commentView {
+    /* biar animasi nanti atur ini */
+    display: flex;
+    gap: 3em;
+    /* align-items: center; */
+    /* sampe sini */
+    width: 100%;
+    background-color: white;
+    box-shadow: 3px 4px 8px 5px #c8c8c833;
+    border-radius: 10px;
+    padding: 35px 25px;
+    margin: 40px 0 0 0;
+}
+
+.detail .commentView .ratingComment {
+    display: flex;
+    align-items: center;
+}
+
+.ratingComment .star {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.ratingComment input[type="radio"] {
+    display: none;
+}
+
+.ratingComment label {
+    font-size: 1.8em;
+    color: #919191;
+    cursor: pointer;
+    text-decoration: solid;
+}
+
+.ratingComment input[type="radio"]:checked~label {
+    color: yellow;
+}
+
+.ratingComment input[type="radio"]:checked~label:hover,
+.ratingComment input[type="radio"]:checked~label:hover~label {
+    color: yellow;
+}
+
+.ratingComment input[type="radio"]:hover~label,
+.ratingComment input[type="radio"]:hover~label~label {
+    color: yellow;
+}
+
+.detail .commentView h3 {
+    margin-bottom: 35px;
+    font-weight: bold;
+}
+
+.detail .commentView .prof img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.detail .commentView .comment {
+    display: flex;
+    gap: 0.8em;
+    margin-bottom: 20px;
+}
+
+.detail .commentView .comment article .ratingComment {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 2px 0;
+}
+
+.detail .commentView .comment article .ratingComment span {
+    font-size: 15px;
+}
+
+.detail .commentView .comment article .ratingComment .rate {
+    display: flex;
+    margin-left: 10px;
+}
+
+.detail .commentView .comment article .text {
+    width: 500px;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.klik {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #91919153;
+    backdrop-filter: blur(1px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.klik main {
+    width: 26%;
+    border-radius: 20px;
+    background-color: white;
+    padding: 30px 25px;
+}
+
+.klik main h2 {
+    font-weight: 600;
+    margin-bottom: 22px;
+    letter-spacing: 1px;
+}
+
+.klik main .bookDet {
+    background-color: #E7EFFF;
+    padding: 18px;
+    border-radius: 15px;
+}
+
+.klik main .bookDet span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #00000022;
+}
+
+.klik main .bookDet h3 {
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.klik main .termNCon p {
+    text-align: justify;
+    text-indent: 6%;
+    margin-top: 5px;
+}
+
+.klik main .termNCon {
+    font-size: 14px;
+    margin: 30px 0 0 0;
+}
+
+.klik main .termNCon .check input {
+    margin-top: 20px;
+}
+
+.klik main .termNCon .check label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.klik main .submit {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.klik main .submit button {
+    width: 180px;
+    height: 45px;
+    font-family: 'FuturaBT-Medium';
+    font-weight: bold;
+    background-color: #A8C2F6;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.klik main .termNCon label {
+    cursor: pointer;
+}
+
+.detail .commentView .kiri .writeComment {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.detail .commentView .kiri .writeComment .submitComment {
+    width: 80px;
+    height: 30px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 5px 0px #A8C2F680;
+    background-color: #A8C2F6;
+    border-radius: 5px;
+    font-family: "FuturaBT-Medium";
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.detail .commentView .kiri textarea {
+    padding: 10px;
+}

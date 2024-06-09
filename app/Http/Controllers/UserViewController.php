@@ -8,6 +8,7 @@ use App\Models\kategori_buku;
 use App\Models\peminjaman;
 use App\Models\rating;
 use App\Models\saved;
+use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -18,18 +19,56 @@ use function Laravel\Prompts\alert;
 
 class UserViewController extends Controller
 {
-    // public function userview()
-    // {
-    //     return view('user_view.index');
-    // }
+    public function test()
+    {
+        return view('layouts.main_newuserview');
+    }
+
+    public function popular()
+    {
+        $bukus = buku::with(['kategori_bukus', 'rating'])->orderBy('avg_rating', 'DESC')->get();
+        $kategoris = kategori_buku::all();
+
+
+        return view('user_view.popular', compact('bukus', 'kategoris'));
+    }
+
+    public function updateUser(Request $request, $id)
+    {
+        try {
+            $user = $request->validate([
+                'name' => 'required|string',
+                'email' => 'required',
+                'password' =>  'required|min:8',
+
+            ]);
+            $user['role_status'] = $request->input('role_status', 'user');
+
+            $find = User::findOrFail($id);
+            $find->update($user);
+            // return response()->json([
+            //     'message' => 'berhasil update buku',
+            //     'data' => $user
+            // ]);
+            return redirect()->back()->with('success', 'profile terupdate');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'gagal update profile' . $e->getMessage());
+        }
+    }
 
     public function showBook()
     {
 
-        $bukus = buku::with(['kategori_bukus', 'rating'])->get();
+        $bukus = buku::with(['kategori_bukus', 'rating'])->orderBy('avg_rating', 'DESC')->get();
+        $keranjang = Peminjaman::with('detail_peminjaman')->where('peminjam_id', auth()->user()->id)->where('status', '<', 3)->latest()->take(3)->get();
         $kategoris = kategori_buku::all();
+        $detail_peminjaman = detail_peminjaman::with('buku')->whereIn('peminjaman_id', $keranjang->pluck('id'))->whereIn('bukus_id', $bukus->pluck('id'))->latest()->get();
+        $saved = saved::with('bukus')->where('users_id', auth()->user()->id)->latest()->get();
 
-        return view('user_view.index', compact('bukus', 'kategoris'));
+
+
+
+        return view('user_view.index', compact('bukus', 'kategoris', 'keranjang', 'detail_peminjaman', 'saved'));
     }
 
     public function detailBook($id)
@@ -72,8 +111,8 @@ class UserViewController extends Controller
         }
 
         // jumlah maksimal 2
-        if ($peminjaman_lama->count() >= 2) {
-            return redirect()->back()->with('error', 'max 2 books!');
+        if ($peminjaman_lama->count() >= 3) {
+            return redirect()->back()->with('error', 'max 3 books!');
             // return response()->json(['status' => 'error', 'message' => 'maks buku 2']);
         } else {
 
@@ -210,6 +249,22 @@ class UserViewController extends Controller
             }
         } catch (\Exception $e) {
             throw $e;
+        }
+    }
+
+    public function kategoriBuku($id)
+    {
+        try {
+
+            $kategoris = kategori_buku::all();
+            $bukus = buku::with(['kategori_bukus', 'rating'])->orderBy('avg_rating', 'DESC')->where('kategori_bukus_id', $id)->get();
+
+            return view('user_view.categories', compact('bukus', 'kategoris'))->with('success', 'thanks for the rating');
+        } catch (Exception $e) {
+            return response([
+                'message' => 'error get allBook',
+                'error' => $e->getMessage()
+            ], 500);
         }
     }
 }

@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow-x: hidden;
+    font-family: 'FuturaBT-Medium';
+    background: linear-gradient(to bottom right, #f4f7ffd5, #d6e2ff3e );
+    height: max-content;
+    display: flex;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 97vh;
+    margin: 10px 0 10px 10px;
+    padding: 50px 30px;
+    align-items: center;
+    width: max-content;
+    border-radius: 20px;
+    background-color: #E7EFFF;
+    box-shadow: 4px 1px 10px 0.2px #bebebe71;
+
+    /* penyebab overflow terletak pada log out button */
+}
+
+nav .logo img{
+    margin-top: 30px;
+    width: 50px;
+}
+
+nav .tab-bar div button{
+    background-color: white;
+    padding: 7px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+nav .tab-bar div button img{
+    width: 25px;
+    height: 25px;
+}
+
+nav .tab-bar div:hover span{
+    visibility: visible;
+    opacity: 1;
+}
+
+nav .tab-bar div:hover button {
+    background-color: #DEE8FF;
+    outline: 1px solid white;
+    transform: scale(1.2);
+}
+
+nav .tab-bar div span{
+    z-index: 99;
+    transition: font-weight 0.1s ease-in, transform 0.2s ease-in-out, color 0.2s ease;
+    font-family: "poppins";
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: absolute;
+    background-color: #DEE8FF;
+    width: max-content;
+    padding: 8px;
+    color: black;
+    left: 100px;
+    border-radius: 5px;
+    visibility: hidden;
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.tab-bar div span::before{
+    content: " ";
+    position: absolute;
+    right: 100%;
+    margin-left: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #DEE8FF transparent transparent;
+}
+
+nav .tab-bar div{
+    cursor: pointer;
+    display: flex;
+    gap: 0.5em;
+    margin-top: 35px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+nav .logout-tab button {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.712);
+    padding: 5px 10px;
+    gap: 0.5em;
+    background-color: #E7EFFF;
+    transition: 2s ease-in-out;
+}
+
+
+.container{
+    height: 100vh;
+    width: 100%;
+    padding-right: 50px;
+    overflow: scroll;
+    padding: 1em 4em 1em 2em;
+    /* position: relative; */
+}
+
+.container::-webkit-scrollbar{
+    display: none;
+}
+
+.container header {
+    padding: 30px 0 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+}
+
+.container header .search input{
+    background-position: left;
+    background-repeat: no-repeat;
+    padding: 20px 30px;
+    outline: none;
+    border: none;
+    box-shadow: 4px 5px 10px #919191;
+    width: 350px;
+    height: 50px;
+    border-radius: 15px;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.search input::placeholder{
+    font-family: Arial;
+}
+
+.search span{
+    transform: translateX(25px);
+    font-size: 15px;
+    color: grey;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.profile img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.profile span .gmail{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* di atas adalah template */
+
+.category-container {
+    margin: 10px 0 30px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.category {
+    padding: 10px 30px;
+    border: 1px solid #A8C2F6;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.category.active {
+    background-color: #A8C2F6;
+    color: white;
+}
+
+.bookList{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.bookList div .cover{
+    width: 150px;
+    height: 230px;
+    filter: brightness(80%);
+    border-radius: 10px;
+}
+
+.bookList div span div h1{
+    font-size: 20px;
+}
+
+.bookList div span{
+    text-align: center;
+}
+
+.bookList div span div img{
+    width: 80px;
+}

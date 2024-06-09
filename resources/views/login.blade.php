@@ -1,55 +1,99 @@
-@extends('layouts.main_login')
-@section('login_content')
-    {{-- content --}}
-    <section>
-        <div class="page-header min-vh-75">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-                        <div class="card card-plain mt-8">
-                            <div class="card-header pb-0 text-left bg-transparent">
-                                <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
-                                <p class="mb-0">Enter your email and password to sign in</p>
-                            </div>
-                            <div class="card-body">
-                                <form role="form" method="POST" action="{{ route('login_user') }}">
-                                    @csrf
-                                    <label>Email</label>
-                                    <div class="mb-3">
-                                        <input type="email" name="email" class="form-control" placeholder="Email"
-                                            aria-label="Email" aria-describedby="email-addon">
-                                    </div>
-                                    <label>Password</label>
-                                    <div class="mb-3">
-                                        <input type="password" name="password" class="form-control" placeholder="Password"
-                                            aria-label="Password" aria-describedby="password-addon">
-                                    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                <p class="mb-4 text-sm mx-auto">
-                                    Don't have an account?
-                                    <a href="{{ route('regis') }}" class="text-info text-gradient font-weight-bold">Sign up</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                            <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                style="background-image:url('../assets/img/curved-images/curved6.jpg')"></div>
-                        </div>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/signinSignup.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/futura-font@1.0.0/styles.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+
+<body>
+    <form action="">
+        <h1>Sign In</h1>
+        <p class="descripsiSign">Enter your detail to proceed futher</p>
+        <div class="Email">
+            <label for="Email">Email</label>
+            <div class="inputs">
+                <input type="text" name="Email">
+                <span class="material-symbols-outlined icon">
+                    mail
+                </span>
+            </div>
+        </div>
+        <div class="Password">
+            <label for="Password">Password</label>
+            <div class="inputs">
+                <input type="password" name="Password" id="password">
+                <span class="material-symbols-outlined icon">
+                    lock
+                </span>
+                <div class="passwordIcon">
+                    <span class="material-symbols-outlined" id="on" onclick="toggleVisibility()">
+                        visibility
+                    </span>
+                    <span class="material-symbols-outlined" id="off" onclick="toggleVisibility()">
+                        visibility_off
+                    </span>
                 </div>
             </div>
         </div>
-    </section>
-@endsection
+        </div>
+        <button>Sign In</button>
+        <p class="regis">Didn't have any account? <a href="signUp.html">Sign Up</a></p>
+    </form>
+    <div class="detail">
+        <div class="img1">
+            <img src="assets/signinSignup/bukuAndG.png" alt="">
+            <img src="assets/signinSignup/bukuNumpuk.png" alt="">
+        </div>
+        <img src="assets/signinSignup/buku.png" alt="">
+    </div>
+</body>
+<script>
+    const icons = document.querySelectorAll('.icon');
+
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.nextElementSibling.classList.add(
+                'hide-icon'); // Sembunyikan ikon setelah input yang sedang difokuskan
+            input.nextElementSibling.firstElementChild.classList.remove(
+                'hide-icon'); // Tampilkan ikon jika input kosong
+        });
+        input.addEventListener('blur', () => {
+            if (input.value.trim() === '') {
+                input.nextElementSibling.classList.remove(
+                    'hide-icon'); // Tampilkan ikon jika input kosong
+                input.nextElementSibling.firstElementChild.classList.remove(
+                    'hide-icon'); // Tampilkan ikon jika input kosong
+            } else {
+                input.nextElementSibling.classList.add(
+                    'hide-icon'); // Sembunyikan ikon jika input tidak kosong
+                input.nextElementSibling.firstElementChild.classList.remove(
+                    'hide-icon'); // Tampilkan ikon jika input kosong
+            }
+        });
+    });
+
+    function toggleVisibility() {
+        const onElement = document.getElementById('on');
+        const offElement = document.getElementById('off');
+        const inputElement = document.getElementById('password');
+
+        if (onElement.style.display === 'none') {
+            onElement.style.display = 'inline';
+            offElement.style.display = 'none';
+            inputElement.type = 'password';
+        } else {
+            onElement.style.display = 'none';
+            offElement.style.display = 'inline';
+            inputElement.type = 'text';
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'FuturaBT-Medium';
+    background: linear-gradient(to bottom right, #f4f7ffd5, #d6e2ff3e);
+    height: max-content;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 97vh;
+    margin: 10px 0 10px 10px;
+    padding: 50px 30px;
+    align-items: center;
+    width: max-content;
+    border-radius: 20px;
+    background-color: #E7EFFF;
+    box-shadow: 4px 1px 10px 0.2px #bebebe71;
+
+    /* penyebab overflow terletak pada log out button */
+}
+
+nav .logo img {
+    margin-top: 30px;
+    width: 50px;
+}
+
+nav .tab-bar div button {
+    background-color: white;
+    padding: 7px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+nav .tab-bar div button img {
+    width: 25px;
+    height: 25px;
+}
+
+nav .tab-bar div:hover span {
+    visibility: visible;
+    opacity: 1;
+}
+
+nav .tab-bar div:hover button {
+    background-color: #DEE8FF;
+    outline: 1px solid white;
+    transform: scale(1.2);
+}
+
+nav .tab-bar div span {
+    z-index: 99;
+    transition: font-weight 0.1s ease-in, transform 0.2s ease-in-out, color 0.2s ease;
+    font-family: "poppins";
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: absolute;
+    background-color: #DEE8FF;
+    width: max-content;
+    padding: 8px;
+    color: black;
+    left: 100px;
+    border-radius: 5px;
+    visibility: hidden;
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.tab-bar div span::before {
+    content: " ";
+    position: absolute;
+    right: 100%;
+    margin-left: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #DEE8FF transparent transparent;
+}
+
+nav .tab-bar div {
+    cursor: pointer;
+    display: flex;
+    gap: 0.5em;
+    margin-top: 35px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+nav .logout-tab button {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.712);
+    padding: 5px 10px;
+    gap: 0.5em;
+    background-color: #E7EFFF;
+    transition: 2s ease-in-out;
+}
+
+
+.container {
+    height: 100vh;
+    width: 100%;
+    padding-right: 50px;
+    overflow: scroll;
+    padding: 1em 4em 1em 2em;
+    /* position: relative; */
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.container header {
+    padding: 30px 0 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.profile img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.profile span .gmail {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.container .profileDetail {
+    display: flex;
+    gap: 3em;
+    width: 100%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 10px 5px #bebebe35;
+    margin-bottom: 40px;
+}
+
+.container .profileDetail .imgProf {
+    position: relative;
+}
+
+.container .profileDetail .imgProf .profilePic {
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+}
+
+.container .profileDetail .imgProf button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #A8C2F6;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+.container .profileDetail .imgProf button:hover {
+    background-color: #ffffff;
+    outline: 1px solid black;
+}
+
+.container .profileDetail .imgProf button img {
+    width: 40px;
+    height: 30px;
+}
+
+.container .profileDetail form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.container .profileDetail form .userInput,
+.emailInput,
+.passInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .profileDetail form input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'FuturaBT-Medium';
+    padding: 2px 5px;
+    width: 300px;
+}
+
+.container .profileDetail form input:focus {
+    border: 1px solid black;
+}
+
+.container .profileDetail .button {
+    height: 50px;
+    border: 2px solid #A8C2F6;
+    color: black;
+    outline: none;
+    border-radius: 10px;
+    font-family: 'FuturaBT-Medium';
+    font-weight: bold;
+    background-color: #A8C2F6;
+}
+
+.container .profileDetail form input::placeholder {
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'FuturaBT-Medium';
+}
+
+.container .saveBooks {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .saveBooks button {
+    background-color: transparent;
+    padding: 2px;
+    outline: 1px solid transparent;
+    border: none;
+    border-radius: 50%;
+}
+
+.container .saveBooks .bookList {
+    display: flex;
+    text-align: center;
+    gap: 1em;
+    /* justify-content: space-evenly; */
+    width: 90%;
+    margin-top: 20px;
+    overflow-x: hidden;
+}
+
+.container .saveBooks .bookList div img {
+    width: 140px;
+    height: 210px;
+    filter: brightness(95%);
+    border-radius: 15px;
+}
+
+.star {
+    font-variation-settings:
+        'FILL' 1;
+}
+
+.history {
+    display: flex;
+    gap: 3em;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.history .historyRequest,
+.completedBooks {
+    flex: 1;
+}
+
+.history h1 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+
+.history div div img {
+    width: 80px;
+    height: 120px;
+    border-radius: 12px;
+    filter: brightness(90%);
+}
+
+.history div div div p {
+    color: #6F6F6F;
+    font-size: 11px;
+}
+
+.history div div div h2 {
+    font-size: 13px;
+}
+
+.history .historyRequest .bookReq .book,
+.history .completedBooks .completeSlide .book {
+    display: flex;
+    gap: 1em;
+}
+
+.book {
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: none !important;
+}
+
+.book .sideReq {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.book .sideReq .data,
+.side {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.book .sideReq .button {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.book .sideReq .button button {
+    background-color: transparent;
+    border: 2px solid black;
+    padding: 8px 30px;
+    font-weight: bold;
+    font-family: 'FuturaBT-Medium';
+    outline: none;
+    border-radius: 10px;
+}
+
+.book .sideReq .button a {
+    text-decoration: none;
+    color: black;
+}

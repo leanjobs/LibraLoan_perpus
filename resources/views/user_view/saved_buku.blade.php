@@ -1,41 +1,57 @@
-@extends('layouts.main_userview')
+@extends('layouts.main_newuserview')
 @section('title', 'LibraLoan')
 @section('content')
 
     {{-- content --}}
-    <div class="container-fluid py-4">
-        <div class="container-fluid py-4">
 
-            <div class="row">
-                @foreach ($saved as $item)
-                    <div class="col-2">
-                        <div class="card">
-                            <a href="/detailBuku/{{ $item->bukus->id }}">
-                                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                                    <img src="{{ asset('storage/' . $item->bukus->image) }}"
-                                        class="img-fluid border-radius-lg">
-                                </div>
-                                <div class="card-body pt-2">
-                                    <span
-                                        class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">{{ $item->bukus->pengarang }}</span>
-                                    <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        {{ $item->bukus->judul }}
-                                    </a>
+    <h1 style="margin: 15px 15px 15px 0; font-size: 30px;">Profile</h1>
+    <div class="profileDetail">
+        <div class="imgProf">
+            <img src="{{ asset('assets/user_view/profile/profilePic.png') }}" alt="profilePic" class="profilePic">
+            <button>
+                <img src="{{ asset('assets/user_view/profile/nav-icon/Home_fill.svg') }}" alt="">
+            </button>
+        </div>
+        <form action="{{ route('update.profile', ['id' => auth()->user()->id]) }}" method="post" class="kotak">
+            @csrf
+            @method('PUT')
+            <span class="userInput">
+                <label for="name">username</label>
+                <input id="name" name="name" type="text" placeholder="dds" value='{{ auth()->user()->name }}'
+                    autocomplete="off">
 
-                                    {{-- <p class="card-description mb-4">
-                                        {{ $buku->deskripsi }}
-                                    </p> --}}
-                                </div>
-                            </a>
+            </span>
+            <span class="emailInput">
+                <label for="email">email</label>
+                <input id="email" name="email" type="email" value='{{ auth()->user()->email }}'
+                    placeholder="isi email" autocomplete="off">
 
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            </span>
+            <span class="passInput">
+                <label for="password">password</label>
+                <input id="password" name="password" type="password" placeholder="*******" autocomplete="off"
+                    value='{{ auth()->user()->password }}'>
+
+            </span>
+            <button type="submit" class="button">save</button>
+        </form>
+    </div>
+
+    <h1 style="margin: 80px 15px 15px 0;">Saved Books</h1>
+
+    <div class="saveBooks">
+
+        <div class="bookList">
+            @foreach ($saved as $item)
+                <div>
+                    <img src="{{ asset('storage/' . $item->bukus->image) }}" alt="">
+                    <p style="font-size: 15px;">{{ $item->bukus->judul }}</p>
+                    <p style="font-size: 14px;">{{ $item->bukus->pengarang }}</p>
+                    <p style="font-size: 14px;">rating : {{ $item->bukus->avg_rating }}</p>
+
+                </div>
+            @endforeach
 
         </div>
 
-    </div>
-
-
-@endsection
+    @endsection

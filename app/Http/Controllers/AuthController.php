@@ -11,6 +11,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
             if ($user->role_status == 'admin') {
@@ -20,10 +21,12 @@ class AuthController extends Controller
             } elseif ($user->role_status == 'user') {
                 return redirect('/dashboard');
             } else {
-                return redirect('/');
+
+                return redirect('/signIn');
             }
+            return redirect('/signIn')->with('error', 'gagal sign In');
         };
-        return redirect('/');
+        return redirect('/signIn')->with('error', 'gagal sign In');
     }
     public function logout()
     {
@@ -49,11 +52,9 @@ class AuthController extends Controller
             //     'message' => 'berhasil tambah buku',
             //     'data' => $user
             // ]);
-            return redirect()->route('login')->with('success', 'kategori buku berhasil ditambahkan');
+            return redirect()->route('login');
         } catch (Exception $e) {
-            return response()->json([
-                'message' => 'Gagal menambah bukuuu ' . $e->getMessage()
-            ], 500);
+            return redirect('/signUp')->with('error', 'gagal sign Up' . $e->getMessage());
         }
     }
 }

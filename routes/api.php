@@ -28,9 +28,8 @@ Route::get('/show-denda', [TransaksiController::class, 'getDenda'])->middleware(
 Route::get('/show-penolakan', [TransaksiController::class, 'getPenolakan'])->middleware(['auth:sanctum']);
 Route::get('/show-history', [TransaksiController::class, 'getHistory'])->middleware(['auth:sanctum']);
 Route::get('/detail-book/{id}', [TransaksiController::class, 'getDetailBook'])->middleware(['auth:sanctum']);
+Route::get('/categories-book/{id}', [PerpusController::class, 'getByCategories'])->middleware(['auth:sanctum']);
+
 
 Route::post('/pinjam/{id}', [TransaksiController::class, 'pinjamBook'])->middleware(['auth:sanctum']);
 Route::post('/rating/{id}', [TransaksiController::class, 'ratingBook'])->middleware(['auth:sanctum']);
-
-
-
