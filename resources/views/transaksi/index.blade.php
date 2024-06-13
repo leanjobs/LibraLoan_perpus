@@ -183,6 +183,7 @@
                                                             @method('POST')
                                                             <select name="kondisi[{{ $item->id }}]" class="form-select"
                                                                 aria-label="Default select example">
+                                                                <option value="normal" hidden></option>
                                                                 <option value="normal">normal</option>
                                                                 <option value="hilang">hilang</option>
                                                                 <option value="rusak">rusak</option>

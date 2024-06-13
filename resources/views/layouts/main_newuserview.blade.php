@@ -75,13 +75,14 @@
     <section class="container">
         <header>
             <div class="search">
+                {{-- <h1 style="font-size: px">Hello {{ auth()->user()->name }} !!!</h1> --}}
                 <span class="material-symbols-outlined">
                     search
                 </span>
                 <input type="text" class="search" placeholder="Search">
             </div>
             <a href="{{ url('/profile') }}" class="profile" style="text-decoration: none; color: black">
-                <img src="{{ asset('assets/user_view/homepage/profilePic.png') }}" alt="">
+                <img src="{{ asset('assets/user_view/homepage/profile.png') }}" alt="">
                 <span class="userDescripsi">
                     <p class="username">{{ auth()->user()->name }}</p>
                     <p class="gmail">{{ auth()->user()->email }}</p>
@@ -89,17 +90,17 @@
             </a>
         </header>
         @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert"
-            style="background-color: #d4edda; color: #155724; padding: 10px;">
-            {{ session('success') }}
-        </div>
-    @elseif (session('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert"
-            style="background-color: #f8d7da; color: #721c24; padding: 10px;">
-            {{ session('error') }}
-        </div>
-    @endif
-    
+            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                style="background-color: #d4edda; color: #155724; padding: 10px;">
+                {{ session('success') }}
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                style="background-color: #f8d7da; color: #721c24; padding: 10px;">
+                {{ session('error') }}
+            </div>
+        @endif
+
         @yield('content')
 
 

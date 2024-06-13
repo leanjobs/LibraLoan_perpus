@@ -54,12 +54,12 @@ Route::group(['middleware' => ['auth', 'CekRole:user']], function () {
     Route::get('/show/penolakan', [KeranjangController::class, 'showPenolakan'])->name('show.penolakan');
     Route::get('/detailBuku/{id}', [UserViewController::class, 'detailBook'])->name('detailBook');
     Route::delete('/delete/keranjang/{id}', [KeranjangController::class, 'delete'])->name('delete.keranjang');
-    Route::post('/pinjam/{id}', [KeranjangController::class, 'pinjam'])->name('pinjam.keranjang');
+    // Route::post('/pinjam/{id}', [KeranjangController::class, 'pinjam'])->name('pinjam.keranjang');
     Route::post('/rating/{id}', [UserViewController::class, 'addRating'])->name('add.rating');
     Route::post('/save/{id}', [UserViewController::class, 'savedBook'])->name('save.book');
     Route::delete('/detailBuku/delete/{id}', [UserViewController::class, 'deleteSave'])->name('delete.save');
     Route::get('/profile', [SaveController::class, 'showSaved'])->name('show.save');
-    Route::put('update/user/{id}', [UserViewController::class, 'updateUser'])->name('update.profile');
+    Route::put('/update/user/{id}', [UserViewController::class, 'updateUser'])->name('update.profile');
     Route::get('/popular', [UserViewController::class, 'popular'])->name('popular.book');
     Route::get('/kategoriBuku/{id}', [UserViewController::class, 'kategoriBuku'])->name('popular.book');
 });

@@ -7,10 +7,10 @@
     <h1 style="margin: 15px 15px 15px 0; font-size: 30px;">Profile</h1>
     <div class="profileDetail">
         <div class="imgProf">
-            <img src="{{ asset('assets/user_view/profile/profilePic.png') }}" alt="profilePic" class="profilePic">
-            <button>
+            <img src="{{ asset('assets/user_view/homepage/profile.png') }}" alt="profilePic" class="profilePic">
+            {{-- <button>
                 <img src="{{ asset('assets/user_view/profile/nav-icon/Home_fill.svg') }}" alt="">
-            </button>
+            </button> --}}
         </div>
         <form action="{{ route('update.profile', ['id' => auth()->user()->id]) }}" method="post" class="kotak">
             @csrf

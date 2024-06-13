@@ -23327,17 +23327,17 @@ html {
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active {
-  color: red;
-  background-color: #A8C2F6;
+  color: #67748e;
+  background-color: #FFF;
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon {
-  background-image: linear-gradient(310deg, red 0%, #cb0c9f 100%);
+  background-image: linear-gradient(310deg,  #A8C2F6, 0%, #A8C2F6 100%);
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon svg .color-background,
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon svg .color-foreground {
-  fill: #A8C2F6;
+  fill: #67748e;
 }
 
 .navbar-main {

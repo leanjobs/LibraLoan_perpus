@@ -88,11 +88,6 @@ class KeranjangController extends Controller
     public static function pinjam(peminjaman $id, Request $request)
     {
         try {
-            // $validatedData = $request->validate([
-            //     'tanggal_pinjam' => 'required|date|after_or_equal:today'
-
-            // ]);
-
             $keranjang = [
                 'tanggal_pinjam' => today(),
                 'status' => 1,

@@ -110,7 +110,7 @@ class UserViewController extends Controller
             return redirect()->back()->with('error', 'tidak dapat meminjam, bayar denda terlebih dahulu');
         }
 
-        // jumlah maksimal 2
+        // jumlah maksimal 3
         if ($peminjaman_lama->count() >= 3) {
             return redirect()->back()->with('error', 'max 3 books!');
             // return response()->json(['status' => 'error', 'message' => 'maks buku 2']);
@@ -142,10 +142,7 @@ class UserViewController extends Controller
                 $bukus->stok -= 1;
                 $bukus->save();
 
-                //    $buku = buku::latest()->get();
-                //    dd($buku);
-
-                //$this->emit('tambahKeranjang');
+        
                 return redirect()->back()->with('success', 'Book borrowed successfully!');
             } else {
                 $peminjaman_baru = peminjaman::create([

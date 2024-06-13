@@ -15,15 +15,18 @@
     <div class="bookList">
         @foreach ($bukus as $buku)
             <div>
-                <img class="cover" src="{{ asset('storage/' . $buku->image) }}">
-                <span>
-                    <div class="booknameWAuthor">
-                        <h1>{{ $buku->judul }}</h1>
-                        <p>{{ $buku->pengarang }}</p>
-                    </div>
-                    <p>rating : {{ $buku->avg_rating }}</p>
-                    {{-- <span id="popularity"></span> --}}
-                </span>
+                <a href="/detailBuku/{{ $buku->id }}" style="text-decoration: none; color: black">
+                    <img class="cover" src="{{ asset('storage/' . $buku->image) }}">
+                    <span>
+                        <div class="booknameWAuthor">
+                            <h1>{{ $buku->judul }}</h1>
+                            <p>{{ $buku->pengarang }}</p>
+                        </div>
+                        <p>rating : {{ $buku->avg_rating }}</p>
+                        {{-- <span id="popularity"></span> --}}
+                    </span>
+                </a>
+
             </div>
         @endforeach
     </div>

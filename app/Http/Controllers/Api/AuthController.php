@@ -39,4 +39,27 @@ class AuthController extends Controller
     {
         return response()->json(Auth::user());
     }
+    public function updateUser(Request $request, $id){
+        try {
+            $user = $request->validate([
+                'name' => 'required|string',
+                'email' => 'required',
+                'password' =>  'required|min:8',
+
+            ]);
+            $user['role_status'] = $request->input('role_status', 'user');
+
+            $find = User::findOrFail($id);
+            $find->update($user);
+            return response()->json([
+                'message' => 'berhasil update buku',
+                'data' => $user
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'gagal update user',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }

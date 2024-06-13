@@ -62,7 +62,7 @@
             </div>
         </div>
         </div>
-        <button type="submit">Sign In</button>
+        <button type="submit">Sign Up</button>
         <p class="regis">Did have any account? <a href="/signIn">Sign In</a></p>
     </form>
     <div class="detail">

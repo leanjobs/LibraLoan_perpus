@@ -27,9 +27,13 @@ Route::get('/show-peminjaman', [TransaksiController::class, 'getPeminjaman'])->m
 Route::get('/show-denda', [TransaksiController::class, 'getDenda'])->middleware(['auth:sanctum']);
 Route::get('/show-penolakan', [TransaksiController::class, 'getPenolakan'])->middleware(['auth:sanctum']);
 Route::get('/show-history', [TransaksiController::class, 'getHistory'])->middleware(['auth:sanctum']);
-Route::get('/detail-book/{id}', [TransaksiController::class, 'getDetailBook'])->middleware(['auth:sanctum']);
+Route::get('/detail-book/{id}', [PerpusController::class, 'getDetailBook'])->middleware(['auth:sanctum']);
 Route::get('/categories-book/{id}', [PerpusController::class, 'getByCategories'])->middleware(['auth:sanctum']);
+Route::get('/show-popular-book', [PerpusController::class, 'getPopularBook'])->middleware(['auth:sanctum']);
 
 
 Route::post('/pinjam/{id}', [TransaksiController::class, 'pinjamBook'])->middleware(['auth:sanctum']);
 Route::post('/rating/{id}', [TransaksiController::class, 'ratingBook'])->middleware(['auth:sanctum']);
+Route::post('/save-book/{id}', [PerpusController::class, 'saveBook'])->middleware(['auth:sanctum']);
+Route::get('/save-book', [PerpusController::class, 'showSaveBook'])->middleware(['auth:sanctum']);
+Route::put('/update-user/{id}', [AuthController::class, 'updateUser'])->middleware(['auth:sanctum']);
