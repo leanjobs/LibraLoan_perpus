@@ -53,12 +53,20 @@
                     <span>Categories</span>
                 </div>
             </a>
-            <a href="{{ url('/popular') }}">
+            {{-- <a href="{{ url('/popular') }}">
                 <div class="activityTab">
                     <button>
                         <img src="{{ asset('assets/user_view/homepage/nav-icon/Favorites_fill.svg') }}">
                     </button>
                     <span>Popular</span>
+                </div>
+            </a> --}}
+            <a href="{{ url('/search') }}">
+                <div class="activityTab">
+                    <button>
+                        <img src="{{ asset('assets/user_view/homepage/nav-icon/Search.svg') }}">
+                    </button>
+                    <span>Search</span>
                 </div>
             </a>
 
@@ -71,18 +79,32 @@
             </div>
         </a>
 
+
     </nav>
     <section class="container">
         <header>
+            {{-- <form action="/search" method="GET">
+                <div class="search">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                    <input type="text" class="search" placeholder="Search" name="search">
+                </div>
+            </form> --}}
+
             <div class="search">
-                {{-- <h1 style="font-size: px">Hello {{ auth()->user()->name }} !!!</h1> --}}
-                <span class="material-symbols-outlined">
+                <h1 style="font-size: 40px">@yield('title')</h1>
+                {{-- <span class="material-symbols-outlined">
                     search
                 </span>
-                <input type="text" class="search" placeholder="Search">
+                <input type="text" class="search" placeholder="Search"> --}}
             </div>
             <a href="{{ url('/profile') }}" class="profile" style="text-decoration: none; color: black">
-                <img src="{{ asset('assets/user_view/homepage/profile.png') }}" alt="">
+                @if (auth()->user()->image)
+                    <img src="{{ asset('storage/' . auth()->user()->image) }}"alt="profilePic">
+                @else
+                    <img src="{{ asset('assets/user_view/homepage/profile.png') }}" alt="profilePic">
+                @endif
                 <span class="userDescripsi">
                     <p class="username">{{ auth()->user()->name }}</p>
                     <p class="gmail">{{ auth()->user()->email }}</p>
@@ -103,7 +125,6 @@
 
         @yield('content')
 
-
     </section>
 </body>
 
@@ -122,6 +143,13 @@
             $('.alert').fadeOut('slow');
         }, 1000);
     });
+
+    imageUpload.onchange = evt => {
+        const [file] = imageUpload.files
+        if (file) {
+            profileView.src = URL.createObjectURL(file)
+        }
+    }
 </script>
 
 </html>

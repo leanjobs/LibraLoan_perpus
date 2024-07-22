@@ -21,6 +21,13 @@
                             @error('nama_kategori')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                            <label for="image_kategori" class="form-label">image_kategori Buku</label>
+                            <input autocomplete="off" required type="file"
+                                class="form-control @error('image_kategori') is-invalid @enderror" id="image_kategori" name="image_kategori"
+                                value="{{ old('image_kategori') }}">
+                            @error('image_kategori')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
 
 
                         </div>

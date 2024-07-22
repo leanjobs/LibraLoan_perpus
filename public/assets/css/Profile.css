@@ -155,7 +155,7 @@ nav .logout-tab button {
     font-weight: 500;
 }
 
-.container .profileDetail {
+.container .profileDetail form {
     display: flex;
     gap: 3em;
     width: 100%;
@@ -200,21 +200,21 @@ nav .logout-tab button {
     height: 30px;
 }
 
-.container .profileDetail form {
+.container .profileDetail form .profileInfo {
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: space-between;
 }
 
-.container .profileDetail form .userInput,
+.container .profileDetail form .profileInfo .userInput,
 .emailInput,
 .passInput {
     display: flex;
     justify-content: space-between;
 }
 
-.container .profileDetail form input {
+.container .profileDetail form .profileInfo input {
     background-color: transparent;
     outline: none;
     border: none;
@@ -226,7 +226,7 @@ nav .logout-tab button {
     width: 300px;
 }
 
-.container .profileDetail form input:focus {
+.container .profileDetail form .profileInfo input:focus {
     border: 1px solid black;
 }
 
@@ -241,7 +241,7 @@ nav .logout-tab button {
     background-color: #A8C2F6;
 }
 
-.container .profileDetail form input::placeholder {
+.container .profileDetail form .profileInfo input::placeholder {
     color: black;
     font-weight: 500;
     font-size: 16px;

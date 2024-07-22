@@ -1,7 +1,7 @@
 @extends('layouts.main_newuserview')
-@section('title', 'LibraLoan')
+@section('title', 'Popular')
 @section('content')
-    <h1 style="margin-bottom: 15px; font-size: 30px;">Popular</h1>
+    {{-- <h1 style="margin-bottom: 15px; font-size: 30px;">Popular</h1> --}}
 
     <div class="bookList">
         @foreach ($bukus as $buku)

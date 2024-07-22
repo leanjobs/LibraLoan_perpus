@@ -61,7 +61,11 @@ Route::group(['middleware' => ['auth', 'CekRole:user']], function () {
     Route::get('/profile', [SaveController::class, 'showSaved'])->name('show.save');
     Route::put('/update/user/{id}', [UserViewController::class, 'updateUser'])->name('update.profile');
     Route::get('/popular', [UserViewController::class, 'popular'])->name('popular.book');
-    Route::get('/kategoriBuku/{id}', [UserViewController::class, 'kategoriBuku'])->name('popular.book');
+    Route::get('/kategoriBuku/{id}', [UserViewController::class, 'kategoriBuku']);
+    Route::get('/showSearch', function () {
+        return view('user_view.search_buku');
+    });
+    Route::get('/search', [UserViewController::class, 'searchBook'])->name('search.book');
 });
 
 Route::group(['middleware' => ['auth', 'CekRole:petugas,admin']], function () {
@@ -103,7 +107,7 @@ Route::group(['middleware' => ['auth', 'CekRole:petugas']], function () {
     Route::get('/transaksi/selesaidipinjam', [TransaksiController::class, 'selesaiDipinjam'])->name('transaksi.selesai');
     Route::get('/transaksi/tolakPeminjaman', [TransaksiController::class, 'tolakPeminjaman'])->name('transaksi.tolak');
     Route::get('/transaksi/denda', [TransaksiController::class, 'denda'])->name('transaksi.denda');
-    Route::get('/showDenda/{id}', [TransaksiController::class, 'showDenda'])->name('show.denda');
+    Route::get('/showDetail/{id}', [TransaksiController::class, 'showDetail'])->name('show.detail');
     Route::post('/transaksi/pinjam/{id}', [TransaksiController::class, 'pinjam'])->name('transaksi.pinjam');
     Route::post('/transaksi/tolak/{id}', [TransaksiController::class, 'tolak'])->name('transaksi.tolak');
     Route::post('/transaksi/kembali/{id}', [TransaksiController::class, 'kembali'])->name('transaksi.kembali');

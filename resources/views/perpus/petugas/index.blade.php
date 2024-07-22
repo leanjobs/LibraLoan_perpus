@@ -6,7 +6,7 @@
     <div class="container-fluid py-4">
         <div class="container-fluid py-4">
             <!-- Button trigger modal -->
-            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createPetugas">
+            <button type="button" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#createPetugas">
                 Tambah petugas
             </button>
             @include('perpus.petugas.createPetugas')

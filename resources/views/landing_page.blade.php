@@ -49,7 +49,7 @@
             <div class="listBook">
                 <div class="dummyBook1">
                     <div class="cover">
-                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample3.jpeg') }}" alt="">
+                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample3.png') }}" alt="">
                         <div class="ratingInput">
                             <img src="{{ asset('assets/user_view/landingpage/Star 1.png') }}" alt="">
                             <p id="rating">4.0</p>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="dummyBook1">
                     <div class="cover">
-                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample4.jpeg') }}" alt="">
+                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample4.png') }}" alt="">
                         <div class="ratingInput">
                             <img src="{{ asset('assets/user_view/landingpage/Star 1.png') }}" alt="">
                             <p id="rating">4.0</p>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="dummyBook1">
                     <div class="cover">
-                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample5.jpeg') }}" alt="">
+                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample5.png') }}" alt="">
                         <div class="ratingInput">
                             <img src="{{ asset('assets/user_view/landingpage/Star 1.png') }}" alt="">
                             <p id="rating">4.0</p>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="dummyBook1">
                     <div class="cover">
-                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample6.jpeg') }}" alt="">
+                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample6.png') }}" alt="">
                         <div class="ratingInput">
                             <img src="{{ asset('assets/user_view/landingpage/Star 1.png') }}" alt="">
                             <p id="rating">4.0</p>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="dummyBook1">
                     <div class="cover">
-                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample7.jpeg') }}" alt="">
+                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample7.png') }}" alt="">
                         <div class="ratingInput">
                             <img src="{{ asset('assets/user_view/landingpage/Star 1.png') }}" alt="">
                             <p id="rating">4.0</p>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="dummyBook1">
                     <div class="cover">
-                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample8.jpeg') }}" alt="">
+                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample8.png') }}" alt="">
                         <div class="ratingInput">
                             <img src="{{ asset('assets/user_view/landingpage/Star 1.png') }}" alt="">
                             <p id="rating">4.0</p>
@@ -115,7 +115,7 @@
                 </div>
                 <div class="dummyBook1">
                     <div class="cover">
-                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample1.jpeg') }}" alt="">
+                        <img src="{{ asset('assets/user_view/landingpage/folderBook/sample1.png') }}" alt="">
                         <div class="ratingInput">
                             <img src="{{ asset('assets/user_view/landingpage/Star 1.png') }}" alt="">
                             <p id="rating">4.0</p>
@@ -142,14 +142,14 @@
         </div>
         <div class="imgPreview">
             <div class="kiri">
-                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample1.jpeg') }}" alt="">
-                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample2.jpeg') }}" alt="">
-                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample3.jpeg') }}" alt="">
+                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample1.png') }}" alt="">
+                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample2.png') }}" alt="">
+                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample3.png') }}" alt="">
             </div>
             <div class="kanan">
-                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample4.jpeg') }}" alt="">
-                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample7.jpeg') }}" alt="">
-                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample8.jpeg') }}" alt="">
+                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample4.png') }}" alt="">
+                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample7.png') }}" alt="">
+                <img src="{{ asset('assets/user_view/landingpage/folderBook/sample8.png') }}" alt="">
             </div>
         </div>
     </section>

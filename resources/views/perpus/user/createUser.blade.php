@@ -20,7 +20,13 @@
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-
+                            <label for="image" class="form-label">image user</label>
+                            <input autocomplete="off" required type="file"
+                                class="form-control @error('image') is-invalid @enderror" id="image" name="image"
+                                value="{{ old('image') }}">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                             <label for="email" class="form-label">email</label>
                             <input autocomplete="off" required type="text"
                                 class="form-control @error('email') is-invalid @enderror" id="email" name="email"

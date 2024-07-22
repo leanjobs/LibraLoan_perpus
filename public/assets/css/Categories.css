@@ -14,7 +14,7 @@ body{
     display: flex;
 }
 
-nav{
+/* nav{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,7 +27,6 @@ nav{
     background-color: #E7EFFF;
     box-shadow: 4px 1px 10px 0.2px #bebebe71;
 
-    /* penyebab overflow terletak pada log out button */
 }
 
 nav .logo img{
@@ -114,7 +113,7 @@ nav .logout-tab button {
     gap: 0.5em;
     background-color: #E7EFFF;
     transition: 2s ease-in-out;
-}
+} */
 
 
 .container{

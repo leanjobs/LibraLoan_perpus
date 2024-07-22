@@ -5,30 +5,33 @@
 @section('content')
     <div class="container-fluid py-4">
         <div class="container-fluid py-4">
-            <a class="btn bg-gradient-primary mt-0 w-15" id="btn-status" href="{{ url('/transaksi/semua') }}">
+            <a class="btn  mt-0 w-15 bg-primary" id="btn-status"  href="{{ url('/transaksi/semua') }}">
                 semua
             </a>
-            <a class="btn bg-gradient-primary mt-0 w-15" id="btn-status" href="{{ url('/transaksi/belumdipinjam') }}">
+            <a class="btn  mt-0 w-15 bg-primary" id="btn-status" 
+                href="{{ url('/transaksi/belumdipinjam') }}">
                 waiting
             </a>
-            <a class="btn bg-gradient-primary mt-0 w-15" id="btn-status" href="{{ url('/transaksi/sedangdipinjam') }}">
+            <a class="btn  mt-0 w-15 bg-primary" id="btn-status" 
+                href="{{ url('/transaksi/sedangdipinjam') }}">
                 sedang dipinjam
             </a>
-            <a class="btn bg-gradient-primary mt-0 w-15" id="btn-status" href="{{ url('transaksi/selesaidipinjam') }}">
+            <a class="btn  mt-0 w-15 bg-primary" id="btn-status" 
+                href="{{ url('transaksi/selesaidipinjam') }}">
                 selesai dipinjam
             </a>
-            <a class="btn bg-gradient-primary mt-0 w-15" id="btn-status" href="{{ url('transaksi/denda') }}">
+            <a class="btn  mt-0 w-15 bg-primary" id="btn-status" 
+                href="{{ url('transaksi/denda') }}">
                 denda
             </a>
-            <a class="btn bg-gradient-primary mt-0 w-15" id="btn-status" href="{{ url('transaksi/tolakPeminjaman') }}">
+            <a class="btn  mt-0 w-15 bg-primary" id="btn-status" 
+                href="{{ url('transaksi/tolakPeminjaman') }}">
                 tolak
             </a>
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
-                        <div class="card-header pb-0 d-flex justify-content-between">
-                            <h6></h6>
-                            {{-- {{ dd($peminjaman) }} --}}
+                        <div class="card-header pb-0 d-flex  justify-content-end">
                             @if (count($peminjaman) > 0)
                                 @php
                                     $statusSemuaSama = true;
@@ -48,8 +51,11 @@
                                     {{-- {{ dd($peminjaman[0]->status) }} --}}
                                     <input type="hidden" value="{{ $statusSemuaSama ? $statusPertama : 'beragam' }}"
                                         name="status">
-                                    <button type="submit" class="btn btn-outline-warning mx-1">pdf</button>
+                                    <button type="submit" class="btn btn-outline-warning mx-1">Print all</button>
                                 </form>
+                                <button type="submit" class="btn btn-outline-warning mx-1" data-bs-toggle="modal"
+                                    data-bs-target="#printModal">Print By date</button>
+                                @include('transaksi.pdf.filterByDate')
                             @endif
 
                         </div>
@@ -104,7 +110,6 @@
                                                 <td>
 
                                                     @foreach ($item->detail_peminjaman as $buku)
-                                                      
                                                         @if ($buku->buku)
                                                             <p class="text-xs text-secondary mb-0 lis-3">
                                                                 {{ $buku->buku->judul }}
@@ -173,6 +178,7 @@
                                                             method="POST" class="d-inline">
                                                             @csrf
                                                             @method('POST')
+                                                            {{-- <input type="submit" hidden value="{{ $}}"> --}}
                                                             <button type="submit"
                                                                 class="btn btn-danger mx-1">Tolak</button>
                                                         </form>
@@ -202,7 +208,12 @@
                                                                 class="btn btn-warning mx-1">bayar</button>
                                                         </form>
                                                     @else
-                                                        <button type="submit" class="btn mx-1">detail</button>
+                                                        <form action="{{ route('show.detail', $item->id) }}"
+                                                            method="GET" class="d-inline">
+                                                            @csrf
+                                                            @method('GET')
+                                                            <button type="submit" class="btn mx-1">detail</button>
+                                                        </form>
                                                     @endif
                                                 </td>
 
@@ -225,11 +236,11 @@
 
             buttons.forEach(function(button) {
                 if (currentUrl.includes(button.href)) {
-                    button.classList.remove('bg-gradient-primary');
+                    button.classList.remove('bg-primary');
                     button.classList.add('bg-gradient-light');
                 } else {
                     button.classList.remove('bg-gradient-light');
-                    button.classList.add('bg-gradient-primary');
+                    button.classList.add('bg-primary');
                 }
             });
         });

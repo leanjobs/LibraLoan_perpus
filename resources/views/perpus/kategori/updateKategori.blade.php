@@ -10,7 +10,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('kategori.update', ['id' => $kategori->id]) }}" method="POST">
+                <form action="{{ route('kategori.update', ['id' => $kategori->id]) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <input type="hidden" id="editKategoriId" value="{{ $kategori->id }}">
@@ -23,8 +24,15 @@
                             @error('nama_kategori')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-
-
+                            <label for="image_kategori" class="form-label">image_kategori kategori</label>
+                            <input autocomplete="off" type="file"
+                                class="form-control @error('image_kategori') is-invalid @enderror" id="image_kategori"
+                                name="image_kategori" value="{{ old('image_kategori', $kategori->image_kategori) }}">
+                            {{-- <img src="{{ asset('storage/' . $kategori->image_kategori) }}" alt="" class="p-2 h-50 d-flex"
+                                style="width: 150px;"> --}}
+                            @error('image_kategori')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
 
                         </div>
                     </div>

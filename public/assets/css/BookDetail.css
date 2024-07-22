@@ -37,7 +37,7 @@ nav .logo img {
     width: 50px;
 }
 
-nav .tab-bar div button {
+/* nav .tab-bar div button {
     background-color: white;
     padding: 7px;
     outline: none;
@@ -116,7 +116,7 @@ nav .logout-tab button {
     gap: 0.5em;
     background-color: #E7EFFF;
     transition: 2s ease-in-out;
-}
+} */
 
 
 .container {

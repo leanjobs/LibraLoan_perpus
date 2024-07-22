@@ -10,7 +10,7 @@
                 Tambah Buku
             </button>
             @include('perpus.buku.createBuku') --}}
-            <a class="btn bg-gradient-primary mt-0 w-15" href="{{ url('/show/createBuku') }}">Tambah buku</a>
+            <a class="btn bg-primary mt-0 w-15" href="{{ url('/show/createBuku') }}">Tambah buku</a>
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
@@ -93,7 +93,7 @@
                                                     <form action="{{ route('buku.delete', $buku->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger mx-1">Delete</button>
+                                                        <button type="submit" class="btn mx-1" style="background-color: #FF7917; color: white;">Delete</button>
 
                                                     </form>
                                                     {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal"
@@ -101,7 +101,7 @@
                                                         data-book-id={{ $buku->id }}>
                                                         Edit buku
                                                     </button> --}}
-                                                    <a href="/update/{{ $buku->id }}" class="btn btn-warning">
+                                                    <a href="/update/{{ $buku->id }}" class="btn" style="background-color: #0D82F9; color: white;">
                                                         Update </a>
 
                                                     {{-- @include('perpus.buku.updateBuku') --}}

@@ -1,9 +1,9 @@
 @extends('layouts.main_newuserview')
-@section('title', 'LibraLoan')
+@section('title', 'Welcome Back !!!')
 @section('content')
     {{-- content --}}
 
-    <h1 style="margin-bottom: 15px;">My Activity</h1>
+    {{-- <h1 style="margin-bottom: 15px;">My Activity</h1> --}}
     <main class="MyActivity">
         <div class="requestBook">
             <div class="goPage">
@@ -76,15 +76,16 @@
             </div>
 
             <div class="preview">
-                @foreach ($saved->take(4) as $save)
-                    @if (isset($save->bukus->image) && $save->bukus->image)
-                        <img src="{{ asset('storage/' . $save->bukus->image) }}" alt="">
-                    @else
-                        <div class="noImage">
-                            <p>tidak ada gambar</p>
-                        </div>
-                    @endif
-                @endforeach
+                @if ($saved->isEmpty())
+                    <div class="noImage"></div>
+                @else
+                    @foreach ($saved->take(4) as $save)
+                        @if (isset($save->bukus->image) && $save->bukus->image)
+                            <img src="{{ asset('storage/' . $save->bukus->image) }}" alt="">
+                        @endif
+                    @endforeach
+                @endif
+
 
             </div>
             <p>for online book</p>
@@ -94,7 +95,7 @@
     <main class="kategori">
         @foreach ($kategoris as $kategori)
             <a href="/kategoriBuku/{{ $kategori->id }}" style="text-decoration: none">
-                <div>
+                <div style="background-image: url('{{ asset('storage/' . $kategori->image_kategori) }}'); ">
                     <p>{{ $kategori->nama_kategori }}</p>
                 </div>
             </a>
@@ -104,12 +105,15 @@
     </main>
     <span style="display: flex; justify-content: space-between; align-items: center;">
         <h1 style="margin:30px 0; font-size: 25px;">Popular</h1>
-        <span style="display: flex; align-items: center; gap: 6px;">
-            <h4>More</h4>
-            <span style="font-size: 20px;" class="material-symbols-outlined">
-                east
+        <a href="/popular" style="text-decoration: none; color: black;">
+            <span style="display: flex; align-items: center; gap: 6px;">
+                <h4>More</h4>
+                <span style="font-size: 20px;" class="material-symbols-outlined">
+                    east
+                </span>
             </span>
-        </span>
+        </a>
+
     </span>
     <main class="popular">
         @foreach ($bukus as $buku)
@@ -128,7 +132,7 @@
                         <p>rating : {{ $buku->avg_rating }}</p>
                     </div>
                 </span>
-                
+
             </div>
         @endforeach
 

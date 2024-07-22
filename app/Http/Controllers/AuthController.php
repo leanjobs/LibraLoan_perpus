@@ -57,4 +57,6 @@ class AuthController extends Controller
             return redirect('/signUp')->with('error', 'gagal sign Up' . $e->getMessage());
         }
     }
+
+    
 }

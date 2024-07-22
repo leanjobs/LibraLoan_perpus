@@ -1,5 +1,5 @@
 @extends('layouts.main_newuserview')
-@section('title', 'LibraLoan')
+@section('title', 'My Activity')
 @section('content')
 
     {{-- content --}}
@@ -11,28 +11,28 @@
 
 
 
-    <h1 style="font-size: 30px;">My Activity</h1>
+    {{-- <h1 style="font-size: 30px;">My Activity</h1> --}}
 
     <div class="tabs">
         <button class="tab-button" id="btn-status" onclick=" window.location.href='{{ url('/show/keranjang') }}'"
             data-url="{{ url('/show/keranjang') }}">
-            semua
+            All
         </button>
         <button class="tab-button" id="btn-status" onclick="window.location.href='{{ url('/show/peminjaman') }}'"
             data-url="{{ url('/show/peminjaman') }}">
-            peminjaman
+            Loans
         </button>
         <button class="tab-button" id="btn-status" onclick="window.location.href='{{ url('/show/denda') }}'"
             data-url="{{ url('/show/denda') }}">
-            denda
+            Fines
         </button>
         <button class="tab-button" id="btn-status" onclick="window.location.href='{{ url('/show/history') }}'"
             data-url="{{ url('/show/history') }}">
-            history
+            History
         </button>
         <button class="tab-button" id="btn-status" onclick="window.location.href='{{ url('/show/penolakan') }}'"
             data-url="{{ url('/show/penolakan') }}">
-            tolak
+            Reject
         </button>
     </div>
 

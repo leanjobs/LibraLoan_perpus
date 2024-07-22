@@ -6,7 +6,7 @@
     <div class="container-fluid py-4">
         <div class="container-fluid py-4">
             <!-- Button trigger modal -->
-            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createUser">
+            <button type="button" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#createUser">
                 Tambah User
             </button>
             @include('perpus.user.createUser')
@@ -19,12 +19,14 @@
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <!-- <form action="{{ route('daftar_user') }}" method="post" enctype="multipart/form-data">
-                                                                                                              @csrf -->
+                                                                                                                  @csrf -->
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 name</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                image</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 email</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -40,6 +42,15 @@
                                             <tr>
                                                 <td>
                                                     <p class="text-xs text-secondary mb-0 ps-3">{{ $user->name }}</p>
+                                                </td>
+                                                <td>
+                                                    @if ($user->image)
+                                                        <img src="{{ asset('storage/' . $user->image) }}" alt=""
+                                                            class="rounded mb-0 " style="height: 100px;">
+                                                    @else
+                                                        <img src="https://pngtree.com/freepng/no-image-vector-illustration-isolated_4979075.html"
+                                                            alt="" class="rounded" style="width: 150px;">
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     <p class="text-xs text-secondary mb-0 ps-3">{{ $user->email }}</p>

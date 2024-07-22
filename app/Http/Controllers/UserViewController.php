@@ -42,14 +42,14 @@ class UserViewController extends Controller
                 'password' =>  'required|min:8',
 
             ]);
+
+            if ($request->file('image')) {
+                $user['image'] = $request->file('image')->store('user-images');
+            };
             $user['role_status'] = $request->input('role_status', 'user');
 
             $find = User::findOrFail($id);
             $find->update($user);
-            // return response()->json([
-            //     'message' => 'berhasil update buku',
-            //     'data' => $user
-            // ]);
             return redirect()->back()->with('success', 'profile terupdate');
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'gagal update profile' . $e->getMessage());
@@ -123,47 +123,23 @@ class UserViewController extends Controller
                 }
             }
 
-            // peminjaman belum ada isinya
-            if ($peminjaman_lama->count() == 0) {
+            $peminjaman_baru = peminjaman::create([
+                'tanggal_pinjam' => today(),
+                //'tanggal_kembali' => Carbon::create(['tanggal_pinjam'])->addDays(10),
+                'kode_pinjam' => random_int(100000000, 999999999),
+                'peminjam_id' => auth()->user()->id,
+                'status' => 1,
+            ]);
 
-                $peminjaman_baru = peminjaman::create([
-                    'tanggal_pinjam' => today(),
-                    // 'tanggal_kembali' =>today()->addDay(),
-                    'kode_pinjam' => random_int(100000000, 999999999),
-                    'peminjam_id' => auth()->user()->id,
-                    'status' => 1,
-                ]);
+            detail_peminjaman::create([
+                'peminjaman_id' => $peminjaman_baru->id,
+                'bukus_id' => $bukus->id
+            ]);
 
-                detail_peminjaman::create([
-                    'peminjaman_id' => $peminjaman_baru->id,
-                    'bukus_id' => $bukus->id
-                ]);
+            // $bukus->stok -= 1;
+            // $bukus->save();
 
-                $bukus->stok -= 1;
-                $bukus->save();
-
-        
-                return redirect()->back()->with('success', 'Book borrowed successfully!');
-            } else {
-                $peminjaman_baru = peminjaman::create([
-                    'tanggal_pinjam' => today(),
-                    //'tanggal_kembali' => Carbon::create(['tanggal_pinjam'])->addDays(10),
-                    'kode_pinjam' => random_int(100000000, 999999999),
-                    'peminjam_id' => auth()->user()->id,
-                    'status' => 1,
-                ]);
-
-                detail_peminjaman::create([
-                    'peminjaman_id' => $peminjaman_baru->id,
-                    'bukus_id' => $bukus->id
-                ]);
-
-                $bukus->stok -= 1;
-                $bukus->save();
-
-                //$this->emit('tambahKeranjang');
-                return redirect()->back()->with('success', 'Book borrowed successfully!');
-            }
+            return redirect()->back()->with('success', 'Book borrowed successfully!');
         }
     }
 
@@ -263,5 +239,14 @@ class UserViewController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+    public function searchBook(Request $request)
+    {
+        $search = $request->input('search');
+
+        $result = buku::where('judul', 'LIKE', '%' . $search)->get();
+
+        //dd($result);
+        return view('user_view.search_buku', compact('result', 'search'));
     }
 }

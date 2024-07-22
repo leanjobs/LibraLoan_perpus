@@ -1,7 +1,7 @@
 @extends('layouts.main_newuserview')
-@section('title', 'LibraLoan')
+@section('title', 'Categories')
 @section('content')
-    <h1 style="margin-bottom: 15px; font-size: 30px;">Categories</h1>
+    {{-- <h1 style="margin-bottom: 15px; font-size: 30px;">Categories</h1> --}}
 
     <div class="category-container">
         @foreach ($kategoris as $kategori)

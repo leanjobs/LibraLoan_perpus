@@ -1,5 +1,5 @@
 @extends('layouts.main_newuserview')
-@section('title', 'LibraLoan')
+@section('title', 'Detail Book')
 @section('content')
     <style>
         * {
@@ -93,7 +93,6 @@
             @else
                 <button type="submit" class="req" id="req" style="cursor: pointer;">habis</button>
             @endif
-
         @endif
         @if ($saved->isEmpty())
             <form action="{{ route('save.book', $bukus->id) }}" method="POST" class="button">

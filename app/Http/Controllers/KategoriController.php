@@ -21,14 +21,16 @@ class KategoriController extends Controller
 
             ]);
 
-
+            if ($request->file('image_kategori')) {
+                $kategori['image_kategori'] = $request->file('image_kategori')->store('kategori-images');
+            };
 
             $kategori = kategori_buku::create($kategori);
             // return response()->json([
             //     'message' => 'berhasil tambah buku',
             //     'data' => $kategori
             // ]);
-             return redirect()->route('kategori_buku')->with('success', 'kategori buku berhasil ditambahkan');
+            return redirect()->route('kategori_buku')->with('success', 'kategori buku berhasil ditambahkan');
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Gagal menambah kategori bukuuu ' . $e->getMessage()
@@ -47,14 +49,20 @@ class KategoriController extends Controller
     public function updateKategori(Request $request, $id)
     {
         try {
+            // dd($request);
+
             $kategori = $request->validate([
                 'nama_kategori' => 'required|string',
 
             ]);
 
-
+            if ($request->file('image_kategori')) {
+                $kategori['image_kategori'] = $request->file('image_kategori')->store('kategori-images');
+            };
             $find = kategori_buku::findOrFail($id);
             $find->update($kategori);
+
+
             // return response()->json([
             //     'message' => 'berhasil tambah buku',
             //     'data' => $kategori

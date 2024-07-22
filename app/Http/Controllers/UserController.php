@@ -23,7 +23,9 @@ class UserController extends Controller
 
             ]);
 
-
+            if ($request->file('image')) {
+                $user['image'] = $request->file('image')->store('user-images');
+            };
             $user['role_status'] = $request->input('role_status', 'user');
 
             $user = User::create($user);
@@ -56,6 +58,11 @@ class UserController extends Controller
                 'password' =>  'required|min:8',
 
             ]);
+
+            if ($request->file('image')) {
+                $user['image'] = $request->file('image')->store('user-images');
+            };
+
             $user['role_status'] = $request->input('role_status', 'user');
 
             $find = User::findOrFail($id);
